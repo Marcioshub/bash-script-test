@@ -1,11 +1,11 @@
 - name: Testing
   hosts: localhost
   vars:
-    env: nysiftest
-    manager: "CN=Dominic Giunta,OU=User Accounts,OU=NYC ITS,OU=District Office,DC=nysif,DC=com"
-    new_manager: "{{ manager if env == 'nysif' else manager | replace('DC=nysif', 'DC=nysiftest') }}"
+    env: testenv
+    manager: "Bob Thomson"
+    new_manager: "{{ manager if env == 'Teddy' else manager | replace('Bob', 'Bill') }}"
   tasks:
-    - name: Replace if env is nysiftest else leave it
+    - name: Get manager
       ansible.builtin.debug:
         msg: "{{ new_manager }}"
 
